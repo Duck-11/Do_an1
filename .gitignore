@@ -1,6 +1,8 @@
+.vs/
 bin/
 obj/
-.vs/
-.dotnet/
-.nuget_packages/
-.tools/
+
+*.user
+*.suo
+*.cache
+*.dbcache

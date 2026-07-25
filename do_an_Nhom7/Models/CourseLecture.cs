@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace do_an_Nhom7.Models
 {
@@ -7,19 +6,28 @@ namespace do_an_Nhom7.Models
     {
         public int Id { get; set; }
 
-        [ForeignKey(nameof(Course))]
+        [Display(Name = "Khóa học")]
         public int CourseId { get; set; }
 
-        [ForeignKey(nameof(Teacher))]
+        [Display(Name = "Giáo viên")]
         public int TeacherId { get; set; }
 
-        [Required(ErrorMessage = "Vui lòng nhập tiêu đề bài giảng.")]
+        [Required, StringLength(200)]
+        [Display(Name = "Tiêu đề")]
         public string Title { get; set; } = string.Empty;
 
+        [Required, StringLength(255)]
+        [Display(Name = "Tên tệp")]
         public string FileName { get; set; } = string.Empty;
+
+        [Required, StringLength(500)]
+        [Display(Name = "Đường dẫn tệp")]
         public string FileUrl { get; set; } = string.Empty;
+
+        [Display(Name = "Ngày tải lên")]
         public DateTime UploadedAt { get; set; } = DateTime.Now;
-        public Course? Course { get; set; }
-        public Teacher? Teacher { get; set; }
+
+        public Course Course { get; set; } = null!;
+        public Teacher Teacher { get; set; } = null!;
     }
 }
